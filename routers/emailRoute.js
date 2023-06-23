@@ -236,7 +236,7 @@ router.get('/send/:userid/:amount', async (req, res) => {
     }
   })
 
-  res.redirect('http://localhost:3000/orders');
+  res.redirect('https://great-indian.onrender.com/');
   // res.status(200).json({success: true});
 })
 module.exports = router;
