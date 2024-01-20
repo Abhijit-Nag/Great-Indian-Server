@@ -16,7 +16,7 @@ const aiRoute = require('./routers/aiRoute');
 dotenv.config();
 
 
-const PORT = 8000;
+const PORT = 8080;
 
 
 const USERNAME = process.env.DB_USERNAME;
