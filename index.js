@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const path = require('path');
 const DefaultData = require('./default');
 const app = express();
 const signRouter = require('./routers/route');
@@ -38,6 +39,22 @@ app.use('/user', userCartRoute);
 app.use('/user', updateRoute);
 app.use('/mail', emailRoute);
 app.use('/ai', aiRoute);
+
+
+
+// Serve the main HTML file for all other routes
+app.use(express.static(path.join(__dirname, 'client/build')));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
+
+app.listen(PORT, () => {
+    console.log(`Server is running now on PORT ${PORT}`);
+});
+
+
+
 
 app.listen(PORT, () => {
     console.log(`Server is running now on PORT ${PORT} `);
